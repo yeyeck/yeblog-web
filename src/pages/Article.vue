@@ -1,6 +1,22 @@
 <template>
   <div class="row flex q-col-gutter-lg" v-scroll="updateActiveToc">
-    <div class="col-12 col-md-10 bg-white">
+    <div v-if="article.id === -1" class="text-center q-pa-lg" style="width: 100%">
+      <p>
+        <img
+          src="~assets/sad.svg"
+          style="width:30vw;max-width:150px;"
+        >
+      </p>
+      <p class="text-faded">
+        Sorry, nothing here...<strong>(404)</strong>
+      </p>
+      <q-btn
+        color="primary"
+        to="/"
+        label="回到主页"
+      />
+  </div>
+  <div v-if="article.id !== -1" class="col-12 col-md-10 bg-white">
       <div class="row justify-center q-pt-lg">
         <q-item-label class="text-h4">{{article.title}}</q-item-label>
       </div>
@@ -79,7 +95,7 @@
         </q-card>
       </div>
     </div>
-    <div class="col-12 col-md-2">
+    <div v-if="article.id !== -1" class="col-12 col-md-2">
       <div class="bg-grey-1" style="position: sticky; top: 80px">
         <q-list dense>
           <q-item class="bg-grey-2">
@@ -170,6 +186,7 @@ export default {
       }
     },
     generateTocs () {
+      if (this.article.id === -1) return
       const anchors = document.getElementById('content').querySelectorAll('h1, h2, h3')
       const titles = []
       anchors.forEach(element => {
@@ -285,6 +302,15 @@ export default {
       'previous',
       'next'
     ])
+  },
+  // created () {
+  //   if (this.article.id === -1) {
+  //     this.$router.push('/404')
+  //   }
+  // },
+  beforeDestroy () {
+    // this.$store.unregisterModule('article')
+    this.$store.commit('article/clear')
   },
   meta () {
     return {

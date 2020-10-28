@@ -6,6 +6,22 @@
 //   countComments: 0,
 //   updateTime: -1
 // }
+export function clear (state) {
+  state.article.id = -1
+  state.article.title = ''
+  state.article.content = ''
+  state.article.keywords = ''
+  state.article.views = 0
+  state.article.countComments = 0
+  state.article.updateTime = -1
+  state.article.labels = []
+  state.article.abstractText = ''
+  state.titles = []
+  state.comments = []
+  state.next = {}
+  state.previous = {}
+}
+
 export function setArticle (state, payload) {
   state.article.id = payload.id
   state.article.title = payload.title
