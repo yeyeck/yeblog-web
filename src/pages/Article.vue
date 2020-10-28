@@ -263,6 +263,9 @@ export default {
     },
     // for meta
     getKeywords () {
+      if (this.article.keywords && this.article.keywords !== '') {
+        return this.article.keywords
+      }
       const list = []
       this.article.labels.forEach(label => {
         list.push(label.name)
@@ -291,7 +294,7 @@ export default {
         description: { name: 'description', content: this.article.abstractText }
       },
       link: {
-        github: { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/styles/github.min.css' },
+        github: { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/styles/tomorrow-night-bright.min.css' },
         katex: { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css' }
       }
     }

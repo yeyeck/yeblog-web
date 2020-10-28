@@ -4,6 +4,7 @@ export default function () {
       id: -1,
       title: '',
       content: '',
+      keywords: '',
       views: 0,
       countComments: 0,
       updateTime: -1,

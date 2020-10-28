@@ -10,6 +10,7 @@ export function setArticle (state, payload) {
   state.article.id = payload.id
   state.article.title = payload.title
   state.article.content = payload.contentHtml
+  state.article.keywords = payload.keywords
   state.article.views = payload.views
   state.article.countComments = payload.countComments ? payload.countComments : 0
   state.article.updateTime = payload.updateTime
