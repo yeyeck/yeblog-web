@@ -1,8 +1,8 @@
 export default function () {
   return {
-    loginShow: false,
     site: {
       siteName: 'Yeblog',
+      subTitle: '',
       icpRecord: '',
       icpRecordUrl: '',
       psRecord: '',

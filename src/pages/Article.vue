@@ -301,6 +301,9 @@ export default {
       'comments',
       'previous',
       'next'
+    ]),
+    ...mapGetters('blog', [
+      'site'
     ])
   },
   // created () {
@@ -314,7 +317,7 @@ export default {
   },
   meta () {
     return {
-      title: this.article.title,
+      title: this.article.title + '——' + this.site.siteName,
       meta: {
         keywords: { name: 'keywords', content: this.getKeywords() },
         description: { name: 'description', content: this.article.abstractText }

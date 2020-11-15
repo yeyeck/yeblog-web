@@ -1,14 +1,8 @@
-export function showLogin (state) {
-  state.loginShow = true
-}
-
-export function closeLogin (state, payload) {
-  state.loginShow = payload
-}
 
 export function setSiteInfo (state, payload) {
   const site = state.site
   site.siteName = payload.siteName
+  site.subTitle = payload.subTitle
   site.icpRecord = payload.icpRecord
   site.icpRecordUrl = payload.icpRecordUrl
   site.psRecord = payload.psRecord

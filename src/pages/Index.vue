@@ -110,6 +110,13 @@ export default {
   methods: {
     fetchData () {
       this.$store.dispatch('page/fetchData', this.currentPage)
+    },
+    getTitle () {
+      let title = this.site.siteName
+      if (this.site.subTitle && this.site.subTitle.length > 0) {
+        title += '——' + this.site.subTitle
+      }
+      return title
     }
   },
   computed: {
@@ -127,7 +134,7 @@ export default {
   },
   meta () {
     return {
-      title: this.site.siteName,
+      title: this.getTitle(),
       meta: {
         keywords: { name: 'keywords', content: this.site.keywords },
         description: { name: 'description', content: this.site.description }
