@@ -25,6 +25,14 @@
               <q-item-label>{{category.name}}</q-item-label>
             </q-item-section>
           </q-item>
+          <q-item v-if="!hasCategories">
+             <q-item-section avatar>
+              <!-- <q-icon name="menu"  color="red"/> -->
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>博主没有设置分类</q-item-label>
+            </q-item-section>
+          </q-item>
         </q-card>
          <q-card>
           <q-item>
@@ -75,7 +83,8 @@ export default {
     ]),
     ...mapGetters('navigations', [
       'categories',
-      'currentCate'
+      'currentCate',
+      'hasCategories'
     ])
   },
   meta () {

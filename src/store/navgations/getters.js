@@ -9,3 +9,7 @@ export const categories = (state) => {
 export const friends = (state) => {
   return state.friends
 }
+
+export const hasCategories = (state) => {
+  return state.hasCategories
+}

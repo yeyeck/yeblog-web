@@ -129,7 +129,6 @@ export default {
     ...mapGetters('blog', [
       'site',
       'top10',
-      'friends',
       'statistics'
     ])
   },

@@ -13,7 +13,9 @@ const routes = [
         path: 'category/',
         component: () => import('pages/Category.vue'),
         children: [
-          { path: ':categoryId/page/:page?', component: () => import('pages/Articles.vue') }
+          { path: '', component: () => import('pages/Articles.vue') },
+          { path: ':categoryId/page/:page?', component: () => import('pages/Articles.vue') },
+          { path: '404', component: () => import('pages/Error404.vue') }
         ]
       },
       { path: 'labels', component: () => import('pages/Friends.vue') }

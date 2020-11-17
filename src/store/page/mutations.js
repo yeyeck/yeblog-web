@@ -3,3 +3,7 @@ export function setPage (state, payload) {
   state.totalPage = payload.totalPage
   state.list = payload.data
 }
+
+export function setCurrent (state, payload) {
+  state.current = payload
+}

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="hasCategories">
     <div v-for="article in list" :key="article.id" class="q-pa-sm">
       <q-card>
         <q-card-section class="q-pt-sm q-pb-sm">
@@ -17,6 +17,13 @@
               <div class="q-pa-sm">{{article.createTime | formatDate}}</div>
             </div>
           </div>
+        </q-card-section>
+      </q-card>
+    </div>
+    <div class="q-pa-sm">
+      <q-card>
+        <q-card-section>
+          该分类下没有任何文章
         </q-card-section>
       </q-card>
     </div>
@@ -42,9 +49,15 @@ export default {
   name: 'Articles',
   preFetch ({ store, currentRoute, previousRoute, redirect, ssrContext }) {
     const page = currentRoute.params.page ? currentRoute.params.page : 1
-    const categoryId = currentRoute.params.categoryId ? currentRoute.params.categoryId : -1
+    let categoryId = currentRoute.params.categoryId ? currentRoute.params.categoryId : -1
     if (categoryId === -1) {
-      redirect('/404')
+      if (store.getters['navigations/hasCategories']) {
+        const categories = store.getters['navigations/categories']
+        categoryId = categories[0].id
+        redirect('/category/' + categoryId + '/page/1')
+      } else {
+        redirect('/category/404')
+      }
     }
     store.commit('navigations/setCurrentCate', categoryId)
     return store.dispatch('page/fetchData', { page: page, categoryId: categoryId })
@@ -57,8 +70,17 @@ export default {
     ]),
     ...mapGetters('navigations', [
       'categories',
-      'currentCate'
-    ])
+      'currentCate',
+      'hasCategories'
+    ]),
+    current: {
+      get: function () {
+        return this.$store.getters['page/current']
+      },
+      set: function (value) {
+        this.$store.commit('page/setCurrent', value)
+      }
+    }
   },
   filters: {
     formatDate: function (value) {
@@ -67,3 +89,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.router {
+  text-decoration: none;
+}
+</style>

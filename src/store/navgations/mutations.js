@@ -1,6 +1,9 @@
 
 export function setCategories (state, payload) {
   state.categories = payload
+  if (payload && payload.length > 0) {
+    state.hasCategories = true
+  }
 }
 
 export function setCurrentCate (state, payload) {
