@@ -25,10 +25,6 @@ export function footers (state) {
   return state.footers
 }
 
-export function friends (state) {
-  return state.friends
-}
-
 export function top10 (state) {
   return state.top10
 }

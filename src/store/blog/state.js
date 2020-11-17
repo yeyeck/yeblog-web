@@ -18,7 +18,6 @@ export default function () {
     },
     navigations: [],
     footers: [],
-    friends: [],
     top10: []
   }
 }

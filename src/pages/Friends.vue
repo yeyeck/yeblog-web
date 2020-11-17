@@ -48,7 +48,8 @@
           </q-item>
           <q-separator />
           <q-card-actions vertical>
-            <q-btn flat color="grey" to="/article/category" label="文章分类" no-caps/>
+            <q-btn flat color="grey" to="/" label="主页" no-caps/>
+            <q-btn flat color="grey" to="/category" label="文章分类" no-caps/>
             <q-btn flat color="grey" to="/friends" label="友情链接" no-caps/>
           </q-card-actions>
         </q-card>
@@ -79,6 +80,9 @@ const colors = ['primary', 'teal', 'orange', 'red', 'accent', 'positive']
 export default {
   // components: { EssentialLink },
   name: 'Friends',
+  preFetch ({ store, currentRoute, previousRoute, redirect, ssrContext }) {
+    return store.dispatch('navigations/fetchFriends')
+  },
   methods: {
     getLinkColor (index) {
       return colors[index % 6]
@@ -88,7 +92,9 @@ export default {
     ...mapGetters('blog', [
       'site',
       'top10',
-      'statistics',
+      'statistics'
+    ]),
+    ...mapGetters('navigations', [
       'friends'
     ])
   },

@@ -26,13 +26,6 @@ export function setFooters (state, payload) {
   })
 }
 
-export function setFriends (state, payload) {
-  state.friends = []
-  payload.forEach(link => {
-    state.friends.push(link)
-  })
-}
-
 export function setTop10 (state, payload) {
   state.top10 = []
   payload.forEach(article => {

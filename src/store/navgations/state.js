@@ -4,6 +4,7 @@ export default function () {
     currentCate: {
       id: '',
       name: ''
-    }
+    },
+    friends: []
   }
 }

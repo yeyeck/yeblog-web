@@ -33,3 +33,37 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+import { date } from 'quasar'
+
+export default {
+  name: 'Articles',
+  preFetch ({ store, currentRoute, previousRoute, redirect, ssrContext }) {
+    const page = currentRoute.params.page ? currentRoute.params.page : 1
+    const categoryId = currentRoute.params.categoryId ? currentRoute.params.categoryId : -1
+    if (categoryId === -1) {
+      redirect('/404')
+    }
+    store.commit('navigations/setCurrentCate', categoryId)
+    return store.dispatch('page/fetchData', { page: page, categoryId: categoryId })
+  },
+  computed: {
+    ...mapGetters('page', [
+      'list',
+      'current',
+      'totalPage'
+    ]),
+    ...mapGetters('navigations', [
+      'categories',
+      'currentCate'
+    ])
+  },
+  filters: {
+    formatDate: function (value) {
+      return date.formatDate(value, 'YYYY-MM-DD')
+    }
+  }
+}
+</script>

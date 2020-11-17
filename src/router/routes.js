@@ -10,11 +10,10 @@ const routes = [
       { path: 'article/:id', component: () => import('pages/Article.vue') },
       { path: 'friends', component: () => import('pages/Friends.vue') },
       {
-        path: 'category',
+        path: 'category/',
         component: () => import('pages/Category.vue'),
         children: [
-          { path: '' },
-          { path: '/:categoryId', component: () => import('pages/Articles.vue') }
+          { path: ':categoryId/page/:page?', component: () => import('pages/Articles.vue') }
         ]
       },
       { path: 'labels', component: () => import('pages/Friends.vue') }

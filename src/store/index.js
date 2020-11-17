@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import article from './article'
 import page from './page'
 import blog from './blog'
-import category from './category'
+import navigations from './navgations'
 
 Vue.use(Vuex)
 
@@ -25,7 +25,7 @@ export default function (/* { ssrContext } */) {
       article,
       page,
       blog,
-      category
+      navigations
     },
 
     // enable strict mode (adds overhead!)

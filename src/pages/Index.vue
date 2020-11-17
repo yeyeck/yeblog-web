@@ -72,7 +72,8 @@
           </q-item>
           <q-separator />
           <q-card-actions vertical>
-            <q-btn flat color="grey" to="/article/category" label="文章分类" no-caps/>
+            <q-btn flat color="grey" to="/" label="主页" no-caps/>
+            <q-btn flat color="grey" to="/category" label="文章分类" no-caps/>
             <q-btn flat color="grey" to="/friends" label="友情链接" no-caps/>
           </q-card-actions>
         </q-card>

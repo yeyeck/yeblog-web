@@ -5,3 +5,7 @@ export const currentCate = (state) => {
 export const categories = (state) => {
   return state.categories
 }
+
+export const friends = (state) => {
+  return state.friends
+}
