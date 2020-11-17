@@ -12,7 +12,7 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
-        <q-btn stretch flat no-caps :label="site.siteName" style="font-size: 20px;" to="/article/page/1"/>
+        <q-btn stretch flat no-caps :label="site.siteName" style="font-size: 20px;" to="/"/>
         <div v-show="hasNavigations && !$q.screen.lt.sm" class="row">
           <q-btn v-for="nav in navigations" :key="nav.id" stretch flat no-caps :label="nav.label" :to="nav.link"/>
         </div>

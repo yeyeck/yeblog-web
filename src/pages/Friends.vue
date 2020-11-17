@@ -2,37 +2,13 @@
   <div class="q-pa-lg">
     <div class="row flex">
       <div class="col-12 col-md-9">
-        <!-- col-md-9 -->
-        <div v-for="article in list" :key="article.id" class="q-pa-sm">
-          <q-card>
-            <q-card-section class="q-pt-sm q-pb-sm">
-              <div class="text-h6"><router-link :to="'/article/' + article.id" class="text-black router">{{article.title}}</router-link></div>
-            </q-card-section>
-            <q-card-section class="justify-between column text-grey q-pb-none">
-              <div class="abstract">{{article.abstractText}}</div>
-              <div class="row text-caption justify-between">
-                <div class="row q-pa-sm justify-start">
-                  <q-btn v-for="label in article.labels" dense flat no-caps :key="label.id" size="xs" color="primary">{{label.name}}</q-btn>
-                </div>
-                <div class="row">
-                  <div class="q-pa-sm">阅读({{article.views}})</div>
-                  <div class="q-pa-sm">评论({{article.countComments}})</div>
-                  <div class="q-pa-sm">{{article.createTime | formatDate}}</div>
-                </div>
-              </div>
-            </q-card-section>
+        <div class="q-pa-sm">
+          <q-card style="min-height: 500px" flat>
+            <q-card-actions>
+              <q-btn v-for="(link, index) in friends" :key="link.id"
+                type="a" :color="getLinkColor(index)" :href="link.link" :label="link.label" target="_blank" no-caps/>
+            </q-card-actions>
           </q-card>
-        </div>
-        <div class="q-pa-lg flex flex-center">
-          <q-pagination
-            v-model="current"
-            :max="current + 2 > totalPage ? totalPage : current + 2"
-            :min="current - 2 > 0 ? current - 2 : 1"
-            :max-pages="totalPage"
-            :boundary-numbers="true"
-            :to-fn="page => '/page/' + page"
-          >
-          </q-pagination>
         </div>
       </div>
       <div class="col-12 col-md-3 q-pa-sm q-gutter-md">
@@ -98,55 +74,31 @@
 <script>
 // import EssentialLink from 'components/EssentialLink.vue'
 import { mapGetters } from 'vuex'
-import { date } from 'quasar'
 
+const colors = ['primary', 'teal', 'orange', 'red', 'accent', 'positive']
 export default {
   // components: { EssentialLink },
-  name: 'PageIndex',
-  preFetch ({ store, currentRoute, previousRoute, redirect, ssrContext }) {
-    const page = currentRoute.params.page ? currentRoute.params.page : 1
-    return store.dispatch('page/fetchData', { page: page, categoryId: -1 })
-  },
+  name: 'Friends',
   methods: {
-    fetchData () {
-      this.$store.dispatch('page/fetchData', this.currentPage)
-    },
-    getTitle () {
-      let title = this.site.siteName
-      if (this.site.subTitle && this.site.subTitle.length > 0) {
-        title += '——' + this.site.subTitle
-      }
-      return title
+    getLinkColor (index) {
+      return colors[index % 6]
     }
   },
   computed: {
-    ...mapGetters('page', [
-      'list',
-      'current',
-      'totalPage'
-    ]),
     ...mapGetters('blog', [
       'site',
       'top10',
-      'friends',
-      'statistics'
+      'statistics',
+      'friends'
     ])
   },
   meta () {
     return {
-      title: this.getTitle(),
+      title: '友情链接 —— ' + this.site.siteName,
       meta: {
         keywords: { name: 'keywords', content: this.site.keywords },
         description: { name: 'description', content: this.site.description }
       }
-    }
-  },
-  mounted () {
-    this.currentPage = this.$store.getters['page/current']
-  },
-  filters: {
-    formatDate: function (value) {
-      return date.formatDate(value, 'YYYY-MM-DD')
     }
   }
 }

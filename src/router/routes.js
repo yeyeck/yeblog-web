@@ -5,9 +5,19 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/article/page/:page?', component: () => import('pages/Index.vue') },
-      { path: '/article/category/:categoryId/page/:page?', component: () => import('pages/Index.vue') },
-      { path: 'article/:id', component: () => import('pages/Article.vue') }
+      { path: 'page/:page?', component: () => import('pages/Index.vue') },
+      // { path: 'category/:categoryId/page/:page?', component: () => import('pages/Category.vue') },
+      { path: 'article/:id', component: () => import('pages/Article.vue') },
+      { path: 'friends', component: () => import('pages/Friends.vue') },
+      {
+        path: 'category',
+        component: () => import('pages/Category.vue'),
+        children: [
+          { path: '' },
+          { path: '/:categoryId', component: () => import('pages/Articles.vue') }
+        ]
+      },
+      { path: 'labels', component: () => import('pages/Friends.vue') }
     ]
   },
 

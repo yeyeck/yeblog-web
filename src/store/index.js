@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import article from './article'
 import page from './page'
 import blog from './blog'
+import category from './category'
 
 Vue.use(Vuex)
 
@@ -23,7 +24,8 @@ export default function (/* { ssrContext } */) {
       // example
       article,
       page,
-      blog
+      blog,
+      category
     },
 
     // enable strict mode (adds overhead!)
