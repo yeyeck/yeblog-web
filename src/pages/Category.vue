@@ -34,6 +34,22 @@
             </q-item-section>
           </q-item>
         </q-card>
+        <q-card>
+          <q-item>
+            <q-item-section avatar>
+              <q-icon name="link" color="red"/>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>站内导航</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-separator />
+          <q-card-actions vertical>
+            <q-btn flat color="grey" to="/" label="主页" no-caps/>
+            <q-btn flat color="grey" to="/category" label="文章分类" no-caps/>
+            <q-btn flat color="grey" to="/friends" label="友情链接" no-caps/>
+          </q-card-actions>
+        </q-card>
          <q-card>
           <q-item>
             <q-item-section avatar>

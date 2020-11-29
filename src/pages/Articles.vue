@@ -20,7 +20,7 @@
         </q-card-section>
       </q-card>
     </div>
-    <div class="q-pa-sm">
+    <div v-if="list.length === 0" class="q-pa-sm">
       <q-card>
         <q-card-section>
           该分类下没有任何文章
