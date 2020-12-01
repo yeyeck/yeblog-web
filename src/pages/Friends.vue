@@ -28,9 +28,9 @@
             </q-avatar>
           </div>
          <q-card-actions align="around">
-           <q-btn flat color="grey">文章({{statistics.totalArticles}})</q-btn>
-           <q-btn flat color="grey">浏览量({{statistics.totalViews}})</q-btn>
-           <q-btn flat color="grey">评论量({{statistics.totalComments}})</q-btn>
+           <q-btn flat color="grey" dense size="sm">文章({{statistics.totalArticles}})</q-btn>
+           <q-btn flat color="grey" dense size="sm">浏览量({{statistics.totalViews}})</q-btn>
+           <q-btn flat color="grey" dense size="sm">评论量({{statistics.totalComments}})</q-btn>
          </q-card-actions>
           <!-- <q-btn-group flat spread class="q-pb-md">
             <q-btn icon="ion-logo-github"/>
