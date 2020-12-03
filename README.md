@@ -36,6 +36,6 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 参考[如何使用 Docker 部署 YeBlog](https://yeyeck.com/article/4)
 ## 3. 效果展示
 ![index.jpg](https://github.com/yeyeck/yeblog-web/tree/master/demo/index.jpg)
-![index.jpg](https://github.com/yeyeck/yeblog-web/tree/master/demo/category.jpg)
-![index.jpg](https://github.com/yeyeck/yeblog-web/tree/master/demo/article.jpg)
-![index.jpg](https://github.com/yeyeck/yeblog-web/tree/master/demo/comment.jpg)
+![category.jpg](https://github.com/yeyeck/yeblog-web/tree/master/demo/category.jpg)
+![article.jpg](https://github.com/yeyeck/yeblog-web/tree/master/demo/article.jpg)
+![comment.jpg](https://github.com/yeyeck/yeblog-web/tree/master/demo/comment.jpg)
